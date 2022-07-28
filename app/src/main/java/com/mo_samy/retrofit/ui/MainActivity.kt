@@ -31,12 +31,12 @@ class MainActivity : AppCompatActivity() {
             val call = retrofit.login(LoginInfo(email, pass))
             call.enqueue(object :retrofit2.Callback<LoginInfo>{
                 override fun onFailure(call: Call<LoginInfo>?, t: Throwable?) {
-                    Toast.makeText(this@MainActivity , "error ${t!!.localizedMessage}" , Toast.LENGTH_SHORT)
+                    Toast.makeText(this@MainActivity , "error ${t!!.localizedMessage}" , Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onResponse(call: Call<LoginInfo>?, response: Response<LoginInfo>?) {
                     Toast.makeText(this@MainActivity,"response code : ${response!!.code().toString()}",Toast.LENGTH_LONG).show()
-                    Log.d(Companion.TAG, "onResponse: success ")
+                    Log.d(TAG, "onResponse: success ")
                     finish()
                     startActivity(Intent(this@MainActivity, MainActivity2::class.java))
                 }
